@@ -1,5 +1,18 @@
-<h1> WELCOME TO THE SAMPLE ZOMATO APP</h1>
+<h1><marquee> WELCOME TO THE SAMPLE ZOMATO APP</marquee></h1>
 <% if user_signed_in? %>
+<p>
+  <%= render 'shared/user_info' %>
+  </p>
+ <p>
+ <%= render 'shared/review_form' %>
+ </p>
+
+      <h3>Reviews (<%= current_user.reviews.count %>)</h3>
+      <p><%= render 'shared/review' %>
+      </p>
+      
+
+
     <%= link_to('Edit registration', edit_user_registration_path) %><br>
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %><br>         
   <% else %>
