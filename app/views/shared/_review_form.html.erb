@@ -1,7 +1,11 @@
+<h2><u> POST REVIEWS</u> </h2>
 <%= form_for(@review) do |f| %>
   <div class="field">
-    <%= f.text_area :rest_name, placeholder: " Give Restaurant Name" %>
-    <%= f.text_area :content, placeholder: "Compose new review..." %>
+    <h3> <u>RESTAURANT NAME</u></h3>
+    <%= f.text_area :rest_name, placeholder: " Give Restaurant Name" ,:cols => "30", :rows => "5" %><br>
+    <h3> <u> REVIEW </u></h3>
+    <%= f.text_area :content, placeholder: "Compose new review..."  , :cols => "50", :rows => "10"%><br>
   </div>
+  <br>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>

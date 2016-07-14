@@ -6,16 +6,19 @@
  <%= render 'shared/review_form' %>
  </p>
 
-      <h3>Reviews (<%= current_user.reviews.count %>)</h3>
+      <h3><u>Your Reviews (<%= current_user.reviews.count %>)</u></h3>
       <p><%= render 'shared/review' %>
       </p>
-      <h2> TOP REVIEWERS </h2>
+      <h2><u> TOP REVIEWERS</u> </h2>
       <% @users=User.all %>
       <% @sortusers=@users.sort {|x,y| y.reviews.count <=> x.reviews.count} %>
       <p><% @sortusers.each do |f| %>
-       <%= f.email %>
+       <%= f.email %> &nbsp; &nbsp; <%= f.reviews.count %> Reviews<hr>
        </p>
        <% end %>
+
+       <h2><u>SEARCH FOR REVIEWS</u></h2>
+
 <%= form_tag(root_path, :method => "get", id: "search-form") do %>
 <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
 <%= submit_tag "Search" %>
@@ -23,14 +26,15 @@
 
  <% if @reviewsearch.present? %>
   <% @reviewsearch.each do |f| %>
-   <h2><%= f.rest_name %></h2>
+   <h2><u><%= f.rest_name %></u></h2>
    <p><%= f.content %></p>
+   <p><%= pluralize(f.upvotes.count, "vote") %></p>
+    <p><%= button_to 'upvote this review', upvote_review_path(f), method: :post %></p><hr>
    <% end %>
 
 <% else %>
   <p>There are no posts containing the term(s) <%= params[:search] %>.</p><br>
 <% end %>
-
     <%= link_to('Edit registration', edit_user_registration_path) %><br>
     <br>
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %><br>         

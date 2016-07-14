@@ -5,10 +5,11 @@ class Review < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 140 }
   validates :user_id, presence: true
  # default_scope order: 'reviews.created_at DESC'
+   has_many :upvotes, dependent: :destroy
 
 def self.search(search)
   where("rest_name LIKE ?", "%#{search}%") 
-  #where("content LIKE ?", "%#{search}%")
+  where("content LIKE ?", "%#{search}%")
 end
 
 end

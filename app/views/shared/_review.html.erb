@@ -1,7 +1,13 @@
+<% @reviews=current_user.reviews %>
+<% if @reviews.count > 0 %>
 <h1><% @reviews.each do |f| %></h1>
 <p><u><%= f.rest_name %></u>
 </p>
 <p><%= f.content %>
 </p>
+
+   <p><%= pluralize(f.upvotes.count, "vote") %></p><hr>
+
 <% end %> 
+<% end %>
  

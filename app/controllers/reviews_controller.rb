@@ -12,6 +12,13 @@ end
    def destroy
    end
 
+def upvote 
+  @review = Review.find(params[:id])
+  @review.upvotes.create
+ # render 'static_pages/home'
+ # @reviews=current_user.reviews
+  redirect_to :back
+end
    private
 
 def review_params
