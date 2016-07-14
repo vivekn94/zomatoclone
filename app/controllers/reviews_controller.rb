@@ -15,6 +15,6 @@ end
    private
 
 def review_params
-    params.require(:review).permit(:content)
+    params.require(:review).permit(:content,:rest_name)
   end
 end

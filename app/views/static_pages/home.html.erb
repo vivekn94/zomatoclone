@@ -1,4 +1,3 @@
-<h1><marquee> WELCOME TO THE SAMPLE ZOMATO APP</marquee></h1>
 <% if user_signed_in? %>
 <p>
   <%= render 'shared/user_info' %>
@@ -10,12 +9,34 @@
       <h3>Reviews (<%= current_user.reviews.count %>)</h3>
       <p><%= render 'shared/review' %>
       </p>
-      
+      <h2> TOP REVIEWERS </h2>
+      <% @users=User.all %>
+      <% @sortusers=@users.sort {|x,y| y.reviews.count <=> x.reviews.count} %>
+      <p><% @sortusers.each do |f| %>
+       <%= f.email %>
+       </p>
+       <% end %>
+<%= form_tag(root_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+<%= submit_tag "Search" %>
+<% end %>
 
+ <% if @reviewsearch.present? %>
+  <% @reviewsearch.each do |f| %>
+   <h2><%= f.rest_name %></h2>
+   <p><%= f.content %></p>
+   <% end %>
+
+<% else %>
+  <p>There are no posts containing the term(s) <%= params[:search] %>.</p><br>
+<% end %>
 
     <%= link_to('Edit registration', edit_user_registration_path) %><br>
+    <br>
   <%= link_to('Logout', destroy_user_session_path, :method => :delete) %><br>         
   <% else %>
+  <br>
   <%= link_to('Login', new_user_session_path)  %><br>  
   <% end %>
-<%= link_to "Sign up!!" ,new_user_registration_path %>
+  <br>
+<%= link_to "Sign up!!" ,new_user_registration_path %><br>

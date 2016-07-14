@@ -6,4 +6,9 @@ class Review < ActiveRecord::Base
   validates :user_id, presence: true
  # default_scope order: 'reviews.created_at DESC'
 
+def self.search(search)
+  where("rest_name LIKE ?", "%#{search}%") 
+  #where("content LIKE ?", "%#{search}%")
+end
+
 end
