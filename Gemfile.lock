@@ -94,6 +94,9 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simple_form (3.2.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     spring (1.7.2)
     sprockets (2.12.4)
       hike (~> 1.2)
@@ -132,6 +135,7 @@ DEPENDENCIES
   rails (= 4.1.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  simple_form
   spring
   sqlite3
   turbolinks

@@ -1,0 +1,16 @@
+
+<h1><%= @review.rest_name %></h1>
+<p><%= @review.content %></p>
+<br><br>
+<%= simple_form_for [@review, Comment.new]  do |f| %>
+ <%= f.text_area :content, class: "form-control" %><br><br>
+  <%= f.submit "Add Comment", class: "btn btn-primary" %>
+<% end %>
+<br><br>
+<h2>COMMENTS</h2>
+<br><br>
+<% @comments.each do |f| %>
+	<%= f.content %><br><br>
+	Posted <%= time_ago_in_words(f.created_at) %> ago.
+	<br><hr>
+	<% end %>

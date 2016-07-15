@@ -29,7 +29,8 @@
    <h2><u><%= f.rest_name %></u></h2>
    <p><%= f.content %></p>
    <p><%= pluralize(f.upvotes.count, "vote") %></p>
-    <p><%= button_to 'upvote this review', upvote_review_path(f), method: :post %></p><hr>
+    <p><%= button_to 'upvote this review', upvote_review_path(f), method: :post %></p><br>
+    <p> to comment/know more about this <%= link_to " click here" , review_path(f) %> </p><hr>
    <% end %>
 
 <% else %>

@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :reviews,dependent: :destroy
+  has_many :comments,dependent: :destroy
 end
