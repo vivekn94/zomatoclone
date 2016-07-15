@@ -8,8 +8,8 @@ class Review < ActiveRecord::Base
    has_many :upvotes, dependent: :destroy
 
 def self.search(search)
-  where("rest_name LIKE ?", "%#{search}%") 
-  where("content LIKE ?", "%#{search}%")
+ # where("rest_name LIKE ?", "%#{search}%") 
+   where("content LIKE ?", "%#{search}%")
 end
 
 end
