@@ -5,7 +5,6 @@
  <p>
  <%= render 'shared/review_form' %>
  </p>
-
       <h3><u>Your Reviews (<%= current_user.reviews.count %>)</u></h3>
       <p><%= render 'shared/review' %>
       </p>
@@ -13,7 +12,8 @@
       <% @users=User.all %>
       <% @sortusers=@users.sort {|x,y| y.reviews.count <=> x.reviews.count} %>
       <p><% @sortusers.each do |f| %>
-       <%= f.email %> &nbsp; &nbsp; <%= f.reviews.count %> Reviews<hr>
+       <%= f.email %> &nbsp; &nbsp; <%= f.reviews.count %> Reviews
+       <p><%= link_to "visit profile",user_path(f) %></p><hr>
        </p>
        <% end %>
 

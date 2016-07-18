@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, :only => [:show,:follow] do
+    member do
+      post :follow
+      post :unfollow
+    end
+  end
+
+
   get 'static_pages/home'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -15,7 +23,7 @@ end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
-  # Example of regular route:
+  # Example of regular route: 
   #   get 'products/:id' => 'catalog#view'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

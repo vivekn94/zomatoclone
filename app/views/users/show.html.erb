@@ -1,0 +1,13 @@
+<h2> Profile of &nbsp; <%= @user.email %> </h2>
+<p><%= @user.follow_count %>following</p>
+<p><%= @user.followers_count %> followers</p>
+<br>
+<p>Reviews (<%= current_user.reviews.count %>)</p>
+<p><%= render 'shared/review' %></p>
+<br>
+<% if current_user.following?(@user) %>
+<%= button_to "unfollow" , unfollow_user_path(@user) %>
+<% else %>
+<%= button_to "follow" , follow_user_path(@user) %>
+<% end %>
+
