@@ -8,7 +8,7 @@ class StaticPagesController < ApplicationController
   	    @reviews=current_user.reviews
   	    if params[:search]
   	    @reviewsearch = Review.search(params[:search]).order("created_at DESC")
-         
+        # @user=User.find(params[:id])
   	  #  @comments=@reviewsearch.comments
   	    @users=User.all
         

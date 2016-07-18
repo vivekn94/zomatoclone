@@ -1,4 +1,3 @@
-<% @reviews=current_user.reviews %>
 <% if @reviews.count > 0 %>
 <h1><% @reviews.each do |f| %></h1>
 <p><u><%= f.rest_name %></u>
@@ -6,8 +5,16 @@
 <p><%= f.content %>
 </p>
 
-   <p><%= pluralize(f.upvotes.count, "vote") %></p><hr>
+   <p><%= pluralize(f.upvotes.count, "vote") %></p>
+ <% if current_user==@user %>
+  <%= link_to "delete",f, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: f.content %>
+  <% end %>
+  <p><%= button_to 'upvote this review', upvote_review_path(f), method: :post %></p><br>
+  <p> to comment/know more about this <%= link_to " click here" , review_path(f) %> </p><hr>
 
+   <hr>
 <% end %> 
 <% end %>
  

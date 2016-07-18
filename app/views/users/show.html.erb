@@ -1,4 +1,5 @@
-<h2> Profile of &nbsp; <%= @user.email %> </h2>
+<h2><u> Profile of &nbsp; <%= @user.email %> !!!</u></h2>
+<%= link_to "home" , root_url %>
 <p><%= @user.follow_count %> following</p>
 <p><%= @user.followers_count %> followers</p>
 <br>
@@ -7,10 +8,11 @@
 <br>
 <div class="common">
 <% @users.each do |f| %>
-<%= f.email %><hr>
+<%= f.email %>
+ <p><%= link_to "visit profile",user_path(f) %></p><hr>
 <% end %>
 </div>
-<p>Reviews (<%= current_user.reviews.count %>)</p>
+<h2><u>Reviews (<%= @user.reviews.count %>)</u></h2>
 <p><%= render 'shared/review' %></p>
 <br>
 <% if current_user.following?(@user) %>

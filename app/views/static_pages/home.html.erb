@@ -2,12 +2,25 @@
 <p>
   <%= render 'shared/user_info' %>
   </p>
- <p>
- <%= render 'shared/review_form' %>
- </p>
-      <h3><u>Your Reviews (<%= current_user.reviews.count %>)</u></h3>
-      <p><%= render 'shared/review' %>
-      </p>
+<p>
+<%= render 'shared/review_form' %>
+</p>
+ <h2><u> Your Reviews (<%= @reviews.count %>)</u></h2>
+
+   <% if @reviews.count > 0 %>
+<h1><% @reviews.each do |f| %></h1>
+<p><u><%= f.rest_name %></u>
+</p>
+<p><%= f.content %>
+</p>
+
+   <p><%= pluralize(f.upvotes.count, "vote") %></p>
+  <%= link_to "delete",f, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: f.content %><hr>
+  <% end %>
+<% end %> 
+
       <h2><u> TOP REVIEWERS</u> </h2>
       <% @users=User.all %>
       <% @sortusers=@users.sort {|x,y| y.reviews.count <=> x.reviews.count} %>
