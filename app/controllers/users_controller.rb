@@ -4,7 +4,7 @@ before_action :authenticate_user!
 
 	def show
 		@user=User.find(params[:id])
-		@users=@user.all_following
+		@users=@user.followers
 	end
 
 	def follow

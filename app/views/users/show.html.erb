@@ -1,7 +1,15 @@
 <h2> Profile of &nbsp; <%= @user.email %> </h2>
-<p><%= @user.follow_count %>following</p>
+<p><%= @user.follow_count %> following</p>
 <p><%= @user.followers_count %> followers</p>
 <br>
+<button> show/hide followers</button>
+<br>
+<br>
+<div class="common">
+<% @users.each do |f| %>
+<%= f.email %><hr>
+<% end %>
+</div>
 <p>Reviews (<%= current_user.reviews.count %>)</p>
 <p><%= render 'shared/review' %></p>
 <br>
