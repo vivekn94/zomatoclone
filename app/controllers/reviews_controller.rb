@@ -27,6 +27,16 @@ def upvote
  # @reviews=current_user.reviews
   redirect_to :back
 end
+
+def bookmark 
+  @review = Review.find(params[:id])
+  @user=current_user
+  @bookm=@user.bookmarks.create
+  @bookm.review_id=@review.id
+  @bookm.save
+  redirect_to :back
+end
+
    private
 
 def review_params

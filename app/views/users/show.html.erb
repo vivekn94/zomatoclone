@@ -3,6 +3,14 @@
 <p><%= @user.follow_count %> following</p>
 <p><%= @user.followers_count %> followers</p>
 <br>
+<h2><u> Bookmarks (<%=@bookmarks.count %>)</u></h2>
+<% @bookmarks.each do |f| %>
+<% if f.review_id %>
+<% @page=Review.find_by_id(f.review_id) %>
+<%= link_to "#{@page.rest_name}" ,review_path(@page) %><hr>
+<% end %>
+<% end %>
+<h2><u> Followers (<%= @user.followers_count %>)</u></h2>
 <button> show/hide followers</button>
 <br>
 <br>

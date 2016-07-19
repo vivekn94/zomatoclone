@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :reviews do
       member do
     post 'upvote'
+    post 'bookmark'
   end
   resources :comments
 

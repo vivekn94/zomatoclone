@@ -5,6 +5,8 @@
 <p>
 <%= render 'shared/review_form' %>
 </p>
+
+ <p><%= link_to "visit your profile",user_path(current_user) %></p><hr>
  <h2><u> Your Reviews (<%= @reviews.count %>)</u></h2>
 
    <% if @reviews.count > 0 %>
@@ -33,7 +35,7 @@
        <h2><u>SEARCH FOR REVIEWS</u></h2>
 
 <%= form_tag(root_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Reviews" %>
 <%= submit_tag "Search" %>
 <% end %>
 

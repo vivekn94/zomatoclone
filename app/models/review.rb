@@ -7,6 +7,7 @@ class Review < ActiveRecord::Base
  # default_scope order: 'reviews.created_at DESC'
    has_many :upvotes, dependent: :destroy
    has_many :comments ,dependent: :destroy
+   has_many :bookmarks, dependent: :destroy
 def self.search(search)
  # where("rest_name LIKE ?", "%#{search}%") 
    where("content LIKE ?", "%#{search}%")

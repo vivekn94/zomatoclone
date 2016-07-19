@@ -1,6 +1,9 @@
 
+<%= link_to "home",root_path %>
 <h1><%= @review.rest_name %></h1>
 <p><%= @review.content %></p>
+<p><%= button_to 'bookmark this review', bookmark_review_path(@review), method: :post %></p><br>
+
 <br><br>
 <%= simple_form_for [@review, Comment.new]  do |f| %>
  <%= f.text_area :content, class: "form-control" %><br><br>

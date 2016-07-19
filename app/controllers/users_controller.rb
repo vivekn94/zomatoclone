@@ -6,6 +6,8 @@ before_action :authenticate_user!
 		@user=User.find(params[:id])
 		@users=@user.followers
 		@reviews=@user.reviews
+        @bookmarks=@user.bookmarks
+
 	end
 
 	def follow
