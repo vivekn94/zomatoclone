@@ -6,15 +6,14 @@
 </p>
 
    <p><%= pluralize(f.upvotes.count, "vote") %></p>
- <% if current_user==@user %>
-  <%= link_to "delete",f, method: :delete,
+	  <p><%= button_to 'upvote this review', upvote_review_path(f), method: :post %></p><br>
+  <p> to comment/know more about this <%= link_to " click here" , review_path(f) %> </p>
+<% if current_user == @user %>
+ <%= link_to "delete the review", f, method: :delete,
                                      data: { confirm: "You sure?" },
                                      title: f.content %>
-  <% end %>
-  <p><%= button_to 'upvote this review', upvote_review_path(f), method: :post %></p><br>
-  <p> to comment/know more about this <%= link_to " click here" , review_path(f) %> </p><hr>
-
    <hr>
 <% end %> 
+<% end %>
 <% end %>
  

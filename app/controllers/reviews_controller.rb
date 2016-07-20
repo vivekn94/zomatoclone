@@ -14,11 +14,11 @@ def show
   @comments=@review.comments
   end
 
-   def destroy
-   @review = current_user.reviews.find(params[:id])
-    @review.destroy
-    redirect_to :back
-   end
+  #def destroy
+   #@review = current_user.reviews.find(params[:id])
+    #@review.destroy
+    #redirect_to :back
+   #end
 
 def upvote 
   @review = Review.find(params[:id])
@@ -36,6 +36,12 @@ def bookmark
   @bookm.save
   redirect_to :back
 end
+
+def destroy
+  @review = Review.find(params[:id])
+  @review.destroy
+  redirect_to :back
+  end
 
    private
 

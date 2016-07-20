@@ -11,7 +11,7 @@
 <% end %>
 <br><br>
 <h2><u>COMMENTS</u></h2>
-<br><br>
+<br>
 <% @comments.each do |f| %>
 	<%= f.content %><br><br>
 	Posted <%= time_ago_in_words(f.created_at) %> ago.
