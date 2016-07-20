@@ -14,17 +14,9 @@ def show
   @comments=@review.comments
   end
 
-  #def destroy
-   #@review = current_user.reviews.find(params[:id])
-    #@review.destroy
-    #redirect_to :back
-   #end
-
 def upvote 
   @review = Review.find(params[:id])
   @review.upvotes.create
- # render 'static_pages/home'
- # @reviews=current_user.reviews
   redirect_to :back
 end
 
