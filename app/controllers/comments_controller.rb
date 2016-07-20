@@ -14,6 +14,13 @@ class CommentsController < ApplicationController
     end
 end
 
+def upvote
+	@comment=Comment.find(params[:id])
+	@comment.commentvotes.create
+	redirect_to :back
+end
+
+
 def comment_params
     params.require(:comment).permit(:content)
   end

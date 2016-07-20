@@ -18,8 +18,11 @@ Rails.application.routes.draw do
     post 'upvote'
     post 'bookmark'
   end
-  resources :comments
-
+  resources :comments do
+    member do
+      post :upvote
+    end
+  end
 end
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
