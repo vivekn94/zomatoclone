@@ -12,6 +12,7 @@ end
 def show
   @review=Review.find(params[:id])
   @comments=@review.comments
+  @user=@review.user
   end
 
 def upvote 

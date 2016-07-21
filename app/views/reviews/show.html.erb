@@ -17,5 +17,10 @@
 	Posted <%= time_ago_in_words(f.created_at) %> ago.
 	 <p><%= pluralize(f.commentvotes.count, "vote") %></p>
     <p><%= button_to 'upvote this comment', upvote_review_comment_path(@review,f), method: :post %></p><br>
+    <% if @user == current_user %>
+    <%= link_to "delete the comment",review_comment_path(@review,f), method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: f.content %>
 	<br><hr>
+	<% end %>
 	<% end %>
