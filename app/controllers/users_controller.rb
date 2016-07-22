@@ -7,6 +7,7 @@ before_action :authenticate_user!
 		@users=@user.followers
 		@reviews=@user.reviews
         @bookmarks=@user.bookmarks
+        @messages=Message.all
 
 	end
 

@@ -6,6 +6,27 @@
 <%= render 'shared/review_form' %>
 </p>
 
+<h2><u> SEND MESSAGES</u> </h2>
+<%= simple_form_for [@user ,Message.new] do |f| %>
+  <div class="field">
+    <h3> <u>Email id of the receiver</u></h3>
+    <%= f.text_area :emailid, placeholder: " Give Email id" ,:cols => "30", :rows => "5" %><br>
+    <h3> <u> Message </u></h3>
+    <%= f.text_area :content, placeholder: "Compose new message..."  , :cols => "50", :rows => "10"%><br>
+  </div>
+  <br>
+  <%= f.submit "Send", class: "btn btn-large btn-primary" %>
+<% end %>
+
+<h2><u> SENT MESSAGES </u></h2>
+<% @messages.each do |f| %>
+<% if f.sender_id == current_user.id %>
+ <%= f.content %><br>
+ <% @receiver = User.find_by_id(f.receiver_id) %>
+ <p>Sent to &nbsp; <%= @receiver.email %> </p><hr>
+ <% end %>
+ <% end %>
+<hr>
  <p><%= link_to "visit your profile",user_path(current_user) %></p><hr>
  <h2><u> Your Reviews (<%= @reviews.count %>)</u></h2>
 

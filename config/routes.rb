@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       post :follow
       post :unfollow
     end
+   resources :messages
   end
 
 
