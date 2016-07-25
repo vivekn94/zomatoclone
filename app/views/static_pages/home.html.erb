@@ -23,7 +23,10 @@
 <% if f.sender_id == current_user.id %>
  <%= f.content %><br>
  <% @receiver = User.find_by_id(f.receiver_id) %>
- <p>Sent to &nbsp; <%= @receiver.email %> </p><hr>
+ <p>Sent to &nbsp; <%= @receiver.email %> </p><br>
+  <%= link_to "delete the message",user_message_path(@user,f), method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: f.content %><hr>
  <% end %>
  <% end %>
 <hr>
